@@ -37,4 +37,5 @@ out/
 .vscode/
 
 ### security ###
-src/main/java/tibetyo/content_hub/WebDriverProperty.java
+src/main/java/tibetyo/content_hub/config/WebDriverProperty.java
+src/main/java/tibetyo/content_hub/auth
