@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 @Getter
 public enum ErrorCode {
     EMAIL_DUPLICATE(HttpStatus.CONFLICT, "USER-001", "EMAIL DUPLICATED"),
+    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "USER-002", "USER NOT FOUND"),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "SERVER-001", "INTERNAL SERVER ERROR"),
     ;
 
