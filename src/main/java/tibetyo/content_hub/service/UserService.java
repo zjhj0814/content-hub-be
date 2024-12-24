@@ -7,6 +7,7 @@ import tibetyo.content_hub.dto.UserResponseDto;
 import tibetyo.content_hub.entity.User;
 import tibetyo.content_hub.exception.CustomException;
 import tibetyo.content_hub.exception.ErrorCode;
+import tibetyo.content_hub.repository.LikeRepository;
 import tibetyo.content_hub.repository.UserRepository;
 
 import java.util.List;
@@ -17,9 +18,11 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final LikeRepository likeRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, LikeRepository likeRepository) {
         this.userRepository = userRepository;
+        this.likeRepository = likeRepository;
     }
 
     @Transactional
@@ -38,5 +41,13 @@ public class UserService {
     public UserResponseDto findUser(String email) {
         Optional<User> user = userRepository.findByEmail(email);
         return user.map(UserResponseDto::of).orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
+    }
+
+    @Transactional
+    public void deleteUser(Long userId){
+        User user = userRepository.findById(userId)
+                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+        likeRepository.deleteAllByUserId(userId);
+        userRepository.delete(user);
     }
 }
