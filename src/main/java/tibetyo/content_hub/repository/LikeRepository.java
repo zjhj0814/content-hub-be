@@ -3,6 +3,7 @@ package tibetyo.content_hub.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import tibetyo.content_hub.entity.Content;
 import tibetyo.content_hub.entity.Like;
 
 import java.util.List;
@@ -16,5 +17,9 @@ public interface LikeRepository extends JpaRepository<Like, Long> {
     boolean existsByUserIdAndContentId(Long userId, Long contentId);
     @Query("SELECT COUNT(l) FROM Like l WHERE l.content.id = :contentId")
     Long countLikesByContentId(@Param("contentId") Long contentId);
-
+    @Query("SELECT c FROM Like l " +
+            "LEFT JOIN FETCH l.content c " +
+            "GROUP BY c.id " +
+            "ORDER BY COUNT(l) DESC")
+    List<Content> findContentsOrderByLikes();
 }
