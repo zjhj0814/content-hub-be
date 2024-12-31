@@ -1,4 +1,4 @@
-package tibetyo.content_hub.dto;
+package tibetyo.content_hub.dto.like;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

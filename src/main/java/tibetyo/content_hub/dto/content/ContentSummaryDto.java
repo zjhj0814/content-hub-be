@@ -1,9 +1,8 @@
-package tibetyo.content_hub.dto;
+package tibetyo.content_hub.dto.content;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import tibetyo.content_hub.entity.Content;
-import tibetyo.content_hub.entity.ContentCast;
 import tibetyo.content_hub.entity.ContentCategory;
 
 import java.util.List;

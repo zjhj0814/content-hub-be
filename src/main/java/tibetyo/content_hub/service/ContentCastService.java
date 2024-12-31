@@ -2,7 +2,7 @@ package tibetyo.content_hub.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import tibetyo.content_hub.dto.ContentCrawlDto;
+import tibetyo.content_hub.dto.content.ContentCrawlDto;
 import tibetyo.content_hub.entity.Cast;
 import tibetyo.content_hub.entity.Content;
 import tibetyo.content_hub.entity.ContentCast;

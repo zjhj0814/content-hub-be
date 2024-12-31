@@ -2,9 +2,9 @@ package tibetyo.content_hub.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tibetyo.content_hub.dto.ContentDetailDto;
-import tibetyo.content_hub.dto.ContentResponseDto;
-import tibetyo.content_hub.dto.ContentSummaryDto;
+import tibetyo.content_hub.dto.content.ContentDetailDto;
+import tibetyo.content_hub.dto.content.ContentResponseDto;
+import tibetyo.content_hub.dto.content.ContentSummaryDto;
 import tibetyo.content_hub.entity.Content;
 import tibetyo.content_hub.entity.ContentCategory;
 import tibetyo.content_hub.exception.CustomException;

@@ -1,4 +1,4 @@
-package tibetyo.content_hub.dto;
+package tibetyo.content_hub.dto.content;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

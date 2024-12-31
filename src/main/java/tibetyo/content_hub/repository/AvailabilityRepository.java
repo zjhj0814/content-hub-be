@@ -3,7 +3,7 @@ package tibetyo.content_hub.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import tibetyo.content_hub.dto.AvailabilityResponseDto;
+import tibetyo.content_hub.dto.availability.AvailabilityResponseDto;
 import tibetyo.content_hub.entity.Availability;
 import tibetyo.content_hub.entity.ContentStatus;
 

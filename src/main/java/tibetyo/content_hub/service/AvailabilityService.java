@@ -2,9 +2,9 @@ package tibetyo.content_hub.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tibetyo.content_hub.dto.AvailabilityCreateRequestDto;
-import tibetyo.content_hub.dto.AvailabilityResponseDto;
-import tibetyo.content_hub.dto.AvailabilityUpdateDto;
+import tibetyo.content_hub.dto.availability.AvailabilityCreateRequestDto;
+import tibetyo.content_hub.dto.availability.AvailabilityResponseDto;
+import tibetyo.content_hub.dto.availability.AvailabilityUpdateDto;
 import tibetyo.content_hub.entity.Availability;
 import tibetyo.content_hub.entity.Content;
 import tibetyo.content_hub.entity.ContentStatus;

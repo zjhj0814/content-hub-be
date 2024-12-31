@@ -2,8 +2,8 @@ package tibetyo.content_hub.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tibetyo.content_hub.dto.UserCreateRequestDto;
-import tibetyo.content_hub.dto.UserResponseDto;
+import tibetyo.content_hub.dto.user.UserCreateRequestDto;
+import tibetyo.content_hub.dto.user.UserResponseDto;
 import tibetyo.content_hub.entity.User;
 import tibetyo.content_hub.exception.CustomException;
 import tibetyo.content_hub.exception.ErrorCode;

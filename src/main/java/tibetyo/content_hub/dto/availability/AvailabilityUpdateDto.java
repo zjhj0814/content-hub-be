@@ -1,4 +1,4 @@
-package tibetyo.content_hub.dto;
+package tibetyo.content_hub.dto.availability;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

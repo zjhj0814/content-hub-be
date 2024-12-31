@@ -2,8 +2,8 @@ package tibetyo.content_hub.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tibetyo.content_hub.dto.LikeRequestDto;
-import tibetyo.content_hub.dto.LikeResponseDto;
+import tibetyo.content_hub.dto.like.LikeRequestDto;
+import tibetyo.content_hub.dto.like.LikeResponseDto;
 import tibetyo.content_hub.entity.Content;
 import tibetyo.content_hub.entity.Like;
 import tibetyo.content_hub.entity.User;
