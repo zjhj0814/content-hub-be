@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface OttRepository extends JpaRepository<Ott, Long> {
     Optional<Ott> findByName(String name);
+    Boolean existsByName(String name);
 }

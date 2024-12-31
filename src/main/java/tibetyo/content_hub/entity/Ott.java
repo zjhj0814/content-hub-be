@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,4 +20,8 @@ public class Ott {
     @Column(name = "ott_name")
     private String name;
     //ott_image
+    @Builder
+    public Ott(String name) {
+        this.name = name;
+    }
 }
