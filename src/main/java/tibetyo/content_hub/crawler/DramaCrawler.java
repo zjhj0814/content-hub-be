@@ -7,8 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import tibetyo.content_hub.dto.AvailabilityCreateRequestDto;
 import tibetyo.content_hub.dto.ContentCrawlDto;
 import tibetyo.content_hub.entity.ContentCategory;
+import tibetyo.content_hub.entity.ContentStatus;
+import tibetyo.content_hub.service.AvailabilityService;
 import tibetyo.content_hub.service.ContentCastService;
 
 import java.util.Collections;
@@ -26,6 +29,7 @@ public class DramaCrawler implements ContentCrawler {
     private WebDriverWait wait;
     private JavascriptExecutor jsExecutor;
     private ContentCastService contentCastService;
+    private AvailabilityService availabilityService;
 
     @Override
     public void crawlContent() throws InterruptedException {
@@ -60,8 +64,13 @@ public class DramaCrawler implements ContentCrawler {
                 List<String> actorNames = getActorNames();
 
                 // 데이터 저장
-                contentCastService.saveCrawlingData(
+                Long contentId = contentCastService.saveCrawlingData(
                         new ContentCrawlDto(title, ContentCategory.DRAMA, actorNames, description)
+                );
+
+                // 상태 저장
+                availabilityService.saveAvailability(
+                        new AvailabilityCreateRequestDto(contentId, "Wavve", ContentStatus.SUBSCRIBER_PROVISION)
                 );
 
                 // 목록 페이지로 돌아가기

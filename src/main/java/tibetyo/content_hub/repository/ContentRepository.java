@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ContentRepository extends JpaRepository<Content, Long> {
+    Optional<Content> findById(Long id);
     @Query("SELECT DISTINCT c FROM Content c " +
             "LEFT JOIN FETCH c.contentCasts cc "+
             "LEFT JOIN FETCH cc.cast " +

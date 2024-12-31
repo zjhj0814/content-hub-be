@@ -24,7 +24,7 @@ public class ContentCastService {
     }
 
     @Transactional
-    public void saveCrawlingData(ContentCrawlDto contentCrawlDto) {
+    public Long saveCrawlingData(ContentCrawlDto contentCrawlDto) {
         Content content = contentRepository.save(
                 Content.builder()
                         .title(contentCrawlDto.getTitle())
@@ -46,5 +46,7 @@ public class ContentCastService {
             cast.addContentCast(contentCast);
             contentCastRepository.save(contentCast);
         }
+
+        return content.getId();
     }
 }

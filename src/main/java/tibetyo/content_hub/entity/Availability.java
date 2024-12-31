@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Availablity {
+public class Availability {
     @Id
     @GeneratedValue
     @Column(name = "availablity_id")
@@ -27,9 +27,13 @@ public class Availablity {
     private ContentStatus contentStatus;
 
     @Builder
-    public Availablity(Content content, Ott ott, ContentStatus contentStatus) {
+    public Availability(Content content, Ott ott, ContentStatus contentStatus) {
         this.content = content;
         this.ott = ott;
+        this.contentStatus = contentStatus;
+    }
+
+    public void updateStatus(ContentStatus contentStatus) {
         this.contentStatus = contentStatus;
     }
 }
