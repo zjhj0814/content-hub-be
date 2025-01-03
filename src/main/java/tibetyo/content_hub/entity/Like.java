@@ -8,13 +8,14 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@Table(name = "user_like")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false, name = "like_id")
     private Long id;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

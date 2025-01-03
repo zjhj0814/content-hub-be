@@ -11,10 +11,11 @@ import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "actor")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Cast {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cast_id")
     private Long id;
 

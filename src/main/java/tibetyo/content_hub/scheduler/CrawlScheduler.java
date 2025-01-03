@@ -1,10 +1,10 @@
 package tibetyo.content_hub.scheduler;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import tibetyo.content_hub.crawler.DramaCrawler;
@@ -14,6 +14,7 @@ import tibetyo.content_hub.util.WebDriverUtil;
 
 import java.time.Duration;
 
+@Profile("prod") //프로덕션 환경에서만 크롤링 진행
 @Component
 @RequiredArgsConstructor
 public class CrawlScheduler {
