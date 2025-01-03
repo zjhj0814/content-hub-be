@@ -1,22 +1,25 @@
 package tibetyo.content_hub.scheduler;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import tibetyo.content_hub.crawler.DramaCrawler;
+import tibetyo.content_hub.service.AvailabilityService;
 import tibetyo.content_hub.service.ContentCastService;
 import tibetyo.content_hub.util.WebDriverUtil;
 
 import java.time.Duration;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CrawlScheduler {
     private final WebDriverUtil webDriverUtil;
     private final ContentCastService contentCastService;
+    private final AvailabilityService availabilityService;
 
     @Scheduled(fixedRate = 604800000) //7일
     public void scheduleCrawling() throws InterruptedException {
@@ -26,7 +29,7 @@ public class CrawlScheduler {
         WebDriverWait webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
         JavascriptExecutor jsExecutor = (JavascriptExecutor) webDriver;
         try {
-            DramaCrawler dramaCrawler = new DramaCrawler(webDriver, webDriverWait, jsExecutor, contentCastService);
+            DramaCrawler dramaCrawler = new DramaCrawler(webDriver, webDriverWait, jsExecutor, contentCastService, availabilityService);
             dramaCrawler.crawlContent();
         } catch (Exception e) {
             System.out.println("--------------------");

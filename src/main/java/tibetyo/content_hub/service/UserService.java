@@ -7,8 +7,8 @@ import tibetyo.content_hub.dto.user.UserResponseDto;
 import tibetyo.content_hub.entity.User;
 import tibetyo.content_hub.exception.CustomException;
 import tibetyo.content_hub.exception.ErrorCode;
-import tibetyo.content_hub.repository.LikeRepository;
 import tibetyo.content_hub.repository.UserRepository;
+import tibetyo.content_hub.repository.like.LikeRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,9 +44,9 @@ public class UserService {
     }
 
     @Transactional
-    public void deleteUser(Long userId){
+    public void deleteUser(Long userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
         likeRepository.deleteAllByUserId(userId);
         userRepository.delete(user);
     }

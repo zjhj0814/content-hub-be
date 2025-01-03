@@ -10,8 +10,8 @@ import tibetyo.content_hub.entity.User;
 import tibetyo.content_hub.exception.CustomException;
 import tibetyo.content_hub.exception.ErrorCode;
 import tibetyo.content_hub.repository.ContentRepository;
-import tibetyo.content_hub.repository.LikeRepository;
 import tibetyo.content_hub.repository.UserRepository;
+import tibetyo.content_hub.repository.like.LikeRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,7 +31,7 @@ public class LikeService {
 
     @Transactional
     public void addLike(LikeRequestDto likeRequestDto) {
-        if(likeRepository.existsByUserIdAndContentId(likeRequestDto.getUserId(), likeRequestDto.getContentId())){
+        if (likeRepository.existsByUserIdAndContentId(likeRequestDto.getUserId(), likeRequestDto.getContentId())) {
             throw new CustomException(ErrorCode.LIKE_ALREADY_EXISTS);
         }
 
@@ -42,15 +42,15 @@ public class LikeService {
     }
 
     @Transactional
-    public void removeLike(LikeRequestDto likeRequestDto){
+    public void removeLike(LikeRequestDto likeRequestDto) {
         Like like = likeRepository.findByUserIdAndContentId(likeRequestDto.getUserId(), likeRequestDto.getContentId())
-                .orElseThrow(()->new CustomException(ErrorCode.LIKE_NOT_FOUND));
+                .orElseThrow(() -> new CustomException(ErrorCode.LIKE_NOT_FOUND));
         likeRepository.delete(like);
     }
 
-    public List<LikeResponseDto> findLikesByUser(Long userId){
+    public List<LikeResponseDto> findLikesByUser(Long userId) {
         List<Like> likes = likeRepository.findLikesByUserId(userId);
-        if(likes.isEmpty()){
+        if (likes.isEmpty()) {
             throw new CustomException(ErrorCode.LIKE_NOT_FOUND);
         }
 
@@ -58,18 +58,18 @@ public class LikeService {
                 .map(LikeResponseDto::of).collect(Collectors.toList());
     }
 
-    public Long countLikesByContent(Long contentId){
+    public Long countLikesByContent(Long contentId) {
         return likeRepository.countLikesByContentId(contentId);
     }
 
-    private User validateUserExists(Long userId){
+    private User validateUserExists(Long userId) {
         return userRepository.findById(userId)
-                .orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
     }
 
-    private Content validateContentExists(Long contentId){
+    private Content validateContentExists(Long contentId) {
         return contentRepository.findById(contentId)
-                .orElseThrow(()->new CustomException(ErrorCode.CONTENT_NOT_FOUND));
+                .orElseThrow(() -> new CustomException(ErrorCode.CONTENT_NOT_FOUND));
     }
 
 }
