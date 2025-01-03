@@ -9,8 +9,8 @@ import tibetyo.content_hub.entity.Content;
 import tibetyo.content_hub.entity.ContentCategory;
 import tibetyo.content_hub.exception.CustomException;
 import tibetyo.content_hub.exception.ErrorCode;
-import tibetyo.content_hub.repository.ContentRepository;
-import tibetyo.content_hub.repository.like.LikeRepository;
+import tibetyo.content_hub.repository.LikeRepository;
+import tibetyo.content_hub.repository.content.ContentRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,7 +51,7 @@ public class ContentService {
     }
 
     public List<ContentResponseDto> findContentsByLikes() {
-        List<Content> contents = likeRepository.findContentsOrderByLikes();
+        List<Content> contents = contentRepository.findContentsOrderByLikes();
         return contents.stream().map(ContentResponseDto::of).collect(Collectors.toList());
     }
 }

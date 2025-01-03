@@ -14,7 +14,7 @@ import static tibetyo.content_hub.entity.QOtt.ott;
 
 @RequiredArgsConstructor
 public class AvailabilityRepositoryCustomImpl implements AvailabilityRepositoryCustom {
-    private final JPAQueryFactory queryFactory;
+    private JPAQueryFactory queryFactory;
 
     @Override
     public List<AvailabilityResponseDto> findAvailabilitiesByContentId(Long contentId) {

@@ -1,4 +1,4 @@
-package tibetyo.content_hub.repository.like;
+package tibetyo.content_hub.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

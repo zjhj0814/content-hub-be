@@ -11,9 +11,9 @@ import tibetyo.content_hub.entity.ContentStatus;
 import tibetyo.content_hub.entity.Ott;
 import tibetyo.content_hub.exception.CustomException;
 import tibetyo.content_hub.exception.ErrorCode;
-import tibetyo.content_hub.repository.ContentRepository;
 import tibetyo.content_hub.repository.OttRepository;
 import tibetyo.content_hub.repository.availability.AvailabilityRepository;
+import tibetyo.content_hub.repository.content.ContentRepository;
 
 import java.util.List;
 

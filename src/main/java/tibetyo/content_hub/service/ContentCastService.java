@@ -8,7 +8,7 @@ import tibetyo.content_hub.entity.Content;
 import tibetyo.content_hub.entity.ContentCast;
 import tibetyo.content_hub.repository.CastRepository;
 import tibetyo.content_hub.repository.ContentCastRepository;
-import tibetyo.content_hub.repository.ContentRepository;
+import tibetyo.content_hub.repository.content.ContentRepository;
 
 @Service
 public class ContentCastService {
