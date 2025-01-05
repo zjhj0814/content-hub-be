@@ -6,16 +6,16 @@ VALUES ('user1@example.com', 'password123'),
 
 -- content 데이터
 INSERT INTO content (title, description, category)
-VALUES ('Movie A', 'An exciting adventure film.', 'ACTION'),
+VALUES ('Movie A', 'An exciting adventure film.', 'DRAMA'),
        ('Movie B', 'A heartwarming drama.', 'DRAMA'),
-       ('Movie C', 'A thrilling sci-fi epic.', 'SCI_FI'),
-       ('Movie D', 'A romantic comedy.', 'ROMANCE'),
-       ('Movie E', 'A suspenseful mystery.', 'MYSTERY'),
+       ('Movie C', 'A thrilling sci-fi epic.', 'MOVIE'),
+       ('Movie D', 'A romantic comedy.', 'ENTERTAINMENT'),
+       ('Movie E', 'A suspenseful mystery.', 'MOVIE'),
        ('Movie F', 'An animated family favorite.', 'ANIMATION'),
-       ('Movie G', 'A historical drama.', 'HISTORY'),
-       ('Movie H', 'A gripping horror movie.', 'HORROR'),
-       ('Movie I', 'An inspiring sports story.', 'SPORTS'),
-       ('Movie J', 'A classic documentary.', 'DOCUMENTARY');
+       ('Movie G', 'A historical drama.', 'DRAMA'),
+       ('Movie H', 'A gripping horror movie.', 'MOVIE'),
+       ('Movie I', 'An inspiring sports story.', 'KIDS'),
+       ('Movie J', 'A classic documentary.', 'DRAMA');
 
 -- ott 데이터
 INSERT INTO ott (ott_name)
@@ -55,8 +55,7 @@ VALUES (1, 1),
 
 -- availability 데이터
 INSERT INTO availability (content_id, ott_id, content_status)
-VALUES (1, 1, 'FREE'),
-       (2, 1, 'SUBSCRIBER_PROVISION'),
+VALUES (2, 1, 'SUBSCRIBER_PROVISION'),
        (3, 1, 'INDIVIDUAL_PURCHASE'),
        (4, 1, 'FREE'),
        (5, 1, 'NOT_PROVIDED'),
