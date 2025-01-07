@@ -31,6 +31,8 @@ public class LikeService {
 
     @Transactional
     public void addLike(LikeRequestDto likeRequestDto) {
+        validateContentExists(likeRequestDto.getContentId());
+        validateUserExists(likeRequestDto.getUserId());
         if (likeRepository.existsByUserIdAndContentId(likeRequestDto.getUserId(), likeRequestDto.getContentId())) {
             throw new CustomException(ErrorCode.LIKE_ALREADY_EXISTS);
         }
@@ -43,12 +45,15 @@ public class LikeService {
 
     @Transactional
     public void removeLike(LikeRequestDto likeRequestDto) {
+        validateUserExists(likeRequestDto.getUserId());
+        validateContentExists(likeRequestDto.getContentId());
         Like like = likeRepository.findByUserIdAndContentId(likeRequestDto.getUserId(), likeRequestDto.getContentId())
                 .orElseThrow(() -> new CustomException(ErrorCode.LIKE_NOT_FOUND));
         likeRepository.delete(like);
     }
 
     public List<LikeResponseDto> findLikesByUser(Long userId) {
+        validateUserExists(userId);
         List<Like> likes = likeRepository.findLikesByUserId(userId);
         if (likes.isEmpty()) {
             throw new CustomException(ErrorCode.LIKE_NOT_FOUND);
@@ -59,6 +64,7 @@ public class LikeService {
     }
 
     public Long countLikesByContent(Long contentId) {
+        validateContentExists(contentId);
         return likeRepository.countLikesByContentId(contentId);
     }
 

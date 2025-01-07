@@ -9,9 +9,8 @@ import tibetyo.content_hub.entity.User;
 @AllArgsConstructor
 public class UserResponseDto {
     private String email;
-    private String password;
 
     public static UserResponseDto of(User user) {
-        return new UserResponseDto(user.getEmail(), user.getPassword());
+        return new UserResponseDto(user.getEmail());
     }
 }

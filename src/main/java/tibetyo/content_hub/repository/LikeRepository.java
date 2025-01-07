@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface LikeRepository extends JpaRepository<Like, Long> {
-    @Query("SELECT l FROM Like l LEFT JOIN l.content c WHERE l.user.id = :userId")
+    @Query("SELECT l FROM Like l LEFT JOIN FETCH l.content c WHERE l.user.id = :userId")
     List<Like> findLikesByUserId(@Param("userId") Long userId);
 
     Optional<Like> findByUserIdAndContentId(Long userId, Long contentId);
