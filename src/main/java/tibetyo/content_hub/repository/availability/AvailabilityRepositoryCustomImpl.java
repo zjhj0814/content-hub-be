@@ -14,7 +14,7 @@ import static tibetyo.content_hub.entity.QOtt.ott;
 
 @RequiredArgsConstructor
 public class AvailabilityRepositoryCustomImpl implements AvailabilityRepositoryCustom {
-    private JPAQueryFactory queryFactory;
+    private final JPAQueryFactory queryFactory;
 
     @Override
     public List<AvailabilityResponseDto> findAvailabilitiesByContentId(Long contentId) {
@@ -30,7 +30,6 @@ public class AvailabilityRepositoryCustomImpl implements AvailabilityRepositoryC
                 )
                 .from(availability)
                 .leftJoin(availability.content, content)
-                .fetchJoin()
                 .leftJoin(availability.ott, ott)
                 .where(availability.content.id.eq(contentId))
                 .fetch();
@@ -50,9 +49,7 @@ public class AvailabilityRepositoryCustomImpl implements AvailabilityRepositoryC
                 )
                 .from(availability)
                 .leftJoin(availability.content, content)
-                .fetchJoin()
                 .leftJoin(availability.ott, ott)
-                .fetchJoin()
                 .where(
                         availability.ott.id.eq(ottId)
                                 .and(availability.contentStatus.in(
@@ -78,9 +75,7 @@ public class AvailabilityRepositoryCustomImpl implements AvailabilityRepositoryC
                 )
                 .from(availability)
                 .leftJoin(availability.content, content)
-                .fetchJoin()
                 .leftJoin(availability.ott, ott)
-                .fetchJoin()
                 .where(
                         availability.ott.id.eq(ottId)
                                 .and(availability.contentStatus.in(contentStatuses))

@@ -36,23 +36,30 @@ public class AvailabilityService {
                 .orElseThrow(() -> new CustomException(ErrorCode.CONTENT_NOT_FOUND));
         Ott ott = ottRepository.findByName(availabilityCreateRequestDto.getOttName())
                 .orElseThrow(() -> new CustomException(ErrorCode.OTT_NOT_FOUND));
-        Availability availability = Availability.builder().content(content).ott(ott).contentStatus(availabilityCreateRequestDto.getStatus()).build();
+        availabilityRepository.findByContentAndOtt(content, ott)
+                .ifPresent(availability -> {
+                    throw new CustomException(ErrorCode.AVAILABILITY_ALREADY_EXISTS);
+                });
+        Availability availability = Availability.builder().content(content).ott(ott).contentStatus(ContentStatus.valueOf(availabilityCreateRequestDto.getStatus())).build();
         availabilityRepository.save(availability);
         return AvailabilityResponseDto.of(availability);
     }
 
     @Transactional
-    public void updateAvailability(AvailabilityUpdateDto availabilityUpdateDto) {
-        Availability availability = availabilityRepository.findById(availabilityUpdateDto.getId())
+    public AvailabilityResponseDto updateAvailability(AvailabilityUpdateDto availabilityUpdateDto) {
+        Availability availability = availabilityRepository.findById(availabilityUpdateDto.getAvailabilityId())
                 .orElseThrow(() -> new CustomException(ErrorCode.AVAILABILITY_NOT_FOUND));
-        availability.updateStatus(availabilityUpdateDto.getStatus());
+        availability.updateStatus(ContentStatus.valueOf(availabilityUpdateDto.getStatus()));
+        return AvailabilityResponseDto.of(availability);
     }
 
     public List<AvailabilityResponseDto> findAvailabilitiesByContentId(Long contentId) {
+        contentRepository.findById(contentId).orElseThrow(() -> new CustomException(ErrorCode.CONTENT_NOT_FOUND));
         return availabilityRepository.findAvailabilitiesByContentId(contentId);
     }
 
     public List<AvailabilityResponseDto> findAvailabilitiesByOttId(Long ottId) {
+        ottRepository.findById(ottId).orElseThrow(() -> new CustomException(ErrorCode.OTT_NOT_FOUND));
         return availabilityRepository.findAvailabilitiesByOtt(ottId);
     }
 

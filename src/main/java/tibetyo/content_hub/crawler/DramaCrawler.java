@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import tibetyo.content_hub.dto.availability.AvailabilityCreateRequestDto;
 import tibetyo.content_hub.dto.content.ContentCrawlDto;
 import tibetyo.content_hub.entity.ContentCategory;
-import tibetyo.content_hub.entity.ContentStatus;
 import tibetyo.content_hub.service.AvailabilityService;
 import tibetyo.content_hub.service.ContentCastService;
 
@@ -22,6 +21,7 @@ import java.util.Set;
 import static tibetyo.content_hub.auth.AccountId.WavveId;
 import static tibetyo.content_hub.auth.AccountPassword.WavvePW;
 import static tibetyo.content_hub.config.OTTURL.Wavve;
+import static tibetyo.content_hub.entity.ContentStatus.SUBSCRIBER_PROVISION;
 
 @AllArgsConstructor
 public class DramaCrawler implements ContentCrawler {
@@ -70,7 +70,7 @@ public class DramaCrawler implements ContentCrawler {
 
                 // 상태 저장
                 availabilityService.saveAvailability(
-                        new AvailabilityCreateRequestDto(contentId, "Wavve", ContentStatus.SUBSCRIBER_PROVISION)
+                        new AvailabilityCreateRequestDto(contentId, "Wavve", SUBSCRIBER_PROVISION.toString())
                 );
 
                 // 목록 페이지로 돌아가기

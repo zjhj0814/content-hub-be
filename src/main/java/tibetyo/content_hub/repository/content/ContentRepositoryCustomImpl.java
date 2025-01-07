@@ -11,7 +11,7 @@ import static tibetyo.content_hub.entity.QLike.like;
 
 @RequiredArgsConstructor
 public class ContentRepositoryCustomImpl implements ContentRepositoryCustom {
-    private JPAQueryFactory queryFactory;
+    private final JPAQueryFactory queryFactory;
 
     @Override
     public List<Content> findContentsOrderByLikes() {

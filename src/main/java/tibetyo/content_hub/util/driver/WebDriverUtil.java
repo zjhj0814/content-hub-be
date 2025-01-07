@@ -1,4 +1,4 @@
-package tibetyo.content_hub.util;
+package tibetyo.content_hub.util.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

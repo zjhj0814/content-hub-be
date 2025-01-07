@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import tibetyo.content_hub.crawler.DramaCrawler;
 import tibetyo.content_hub.service.AvailabilityService;
 import tibetyo.content_hub.service.ContentCastService;
-import tibetyo.content_hub.util.WebDriverUtil;
+import tibetyo.content_hub.util.driver.WebDriverUtil;
 
 import java.time.Duration;
 
