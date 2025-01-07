@@ -45,7 +45,6 @@ public class ContentService {
     }
 
     public List<ContentSummaryDto> findContentByCast(String castName) {
-        //컨트롤러에서 castName null이거나 trim().isEmpty()일 때 관련 에러 처리
         List<Content> contents = contentRepository.findContentsByCastName(castName.strip());
         return contents.stream().map(ContentSummaryDto::of).collect(Collectors.toList());
     }

@@ -14,6 +14,6 @@ public class AvailabilityCreateRequestDto {
     private Long contentId;
     @NotBlank
     private String ottName;
-    @Enum(enumClass = ContentStatus.class, message = "Invalid status", ignoreCase = true)
+    @Enum(enumClass = ContentStatus.class, message = "Invalid status", ignoreCase = false)
     private String status;
 }

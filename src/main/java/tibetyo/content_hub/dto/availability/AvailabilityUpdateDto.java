@@ -11,6 +11,6 @@ import tibetyo.content_hub.util.annotation.Enum;
 public class AvailabilityUpdateDto {
     @NotNull
     private Long availabilityId;
-    @Enum(enumClass = ContentStatus.class, message = "Invalid status", ignoreCase = true)
+    @Enum(enumClass = ContentStatus.class, message = "Invalid status", ignoreCase = false)
     private String status;
 }
