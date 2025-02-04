@@ -1,17 +1,22 @@
 package tibetyo.content_hub.dto.availability;
 
 import com.querydsl.core.annotations.QueryProjection;
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import tibetyo.content_hub.entity.Availability;
 import tibetyo.content_hub.entity.ContentStatus;
 
 @Getter
 public class AvailabilityResponseDto {
+    @Schema(name = "content id", example = "1")
     private final Long contentId;
+    @Schema(name = "content title", example = "우아한 가")
     private final String contentTitle;
+    @Schema(name = "ott id", example = "1")
     private final Long ottId;
+    @Schema(name = "ott name", example = "wavve")
     private final String ottName;
+    @Schema(name = "content status", example = "FREE")
     private final ContentStatus status;
 
     @QueryProjection

@@ -1,5 +1,6 @@
 package tibetyo.content_hub.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import tibetyo.content_hub.service.AvailabilityService;
 
 import java.util.List;
 
+@Tag(name = "Availability API", description = "이용가능성 관련 API")
 @RestController
 @RequiredArgsConstructor
 public class AvailabilityController {

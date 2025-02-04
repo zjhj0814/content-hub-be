@@ -1,5 +1,6 @@
 package tibetyo.content_hub.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import tibetyo.content_hub.service.LikeService;
 
 import java.util.List;
 
+@Tag(name = "Like API", description = "좋아요 관련 API")
 @RestController
 @RequestMapping("/likes")
 @RequiredArgsConstructor

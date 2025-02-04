@@ -1,5 +1,6 @@
 package tibetyo.content_hub.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import tibetyo.content_hub.service.UserService;
 
 import java.util.List;
 
+@Tag(name = "User API", description = "사용자 관련 API")
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor

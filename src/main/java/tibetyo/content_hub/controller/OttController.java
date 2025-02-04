@@ -1,5 +1,6 @@
 package tibetyo.content_hub.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import tibetyo.content_hub.service.OttService;
 
 import java.util.List;
 
+@Tag(name = "Ott API", description = "Ott 관련 API")
 @RestController
 @RequiredArgsConstructor
 public class OttController {
