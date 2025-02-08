@@ -18,10 +18,7 @@ public interface ContentRepository extends JpaRepository<Content, Long>, Content
             "WHERE c.id = :contentId")
     Optional<Content> findContentAndCastByContentId(@Param("contentId") Long contentId);
 
-    @Query("SELECT DISTINCT c FROM Content c " +
-            "LEFT JOIN FETCH c.contentCasts cc " +
-            "LEFT JOIN FETCH cc.cast " +
-            "WHERE LOWER(c.title) LIKE LOWER(CONCAT('%',:title,'%'))")
+    @Query(value = "SELECT * FROM Content c WHERE c.title &@ :title", nativeQuery = true)
     List<Content> findContentsByTitle(@Param("title") String title);
 
     List<Content> findContentsByCategory(ContentCategory category);

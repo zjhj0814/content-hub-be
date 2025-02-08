@@ -18,7 +18,6 @@ public class Content {
     @Column(name = "content_id")
     private Long id;
     private String title;
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String description;
     @Enumerated(EnumType.STRING)

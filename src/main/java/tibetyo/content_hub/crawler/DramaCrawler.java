@@ -89,6 +89,7 @@ public class DramaCrawler implements ContentCrawler {
                 ExpectedConditions.presenceOfElementLocated(By.cssSelector(".content-clamp span span"))
         );
         String description = descriptionElement.getAttribute("aria-label");
+        System.out.println("description = " + description);
         return description;
     }
 
