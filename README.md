@@ -28,6 +28,9 @@ OTT 서비스를 로그인하지 않으면 콘텐츠 목록을 확인하기 어�
 * Swagger를 사용한 API 문서 자동화
 * 엔티티에 따른 CRUD API 개발
 
+## 💿 ERD
+![content-hub-erd](https://github.com/user-attachments/assets/184b6b22-96a6-48e5-ad43-7e842beb546f)
+
 ## 📃 Stacks
 
 ### Environment
